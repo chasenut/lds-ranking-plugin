@@ -1,5 +1,6 @@
 package me.Cashtann.combatRankingSystem;
 
+import me.Cashtann.combatRankingSystem.commands.CRSCommand;
 import me.Cashtann.combatRankingSystem.listeners.ChatMessageListener;
 import me.Cashtann.combatRankingSystem.listeners.PlayerDeathListener;
 import me.Cashtann.combatRankingSystem.listeners.PlayerJoinListener;
@@ -14,27 +15,39 @@ public final class CombatRankingSystem extends JavaPlugin implements Listener {
 
     private static CombatRankingSystem plugin;
 
+    private static String commandSuccessOutputPrefix;
+    private static String commandFailedOutputPrefix;
+
     @Override
     public void onEnable() {
         // Plugin startup logic
 
+        // Config load and save
+        //this.getConfig().options().copyDefaults();
+        this.saveDefaultConfig();
 
-        getConfig().options().copyDefaults();
-        saveDefaultConfig();
 
+        // Listeners register
         getServer().getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(new ChatMessageListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerDeathListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
-        getServer().broadcastMessage(StringFormatter.formatString(" \n\n       &dCombat Ranking System powered by Cashtann\n\n"));
 
-
+        // PlaceholderAPI register
         new CRSPlaceholderExpansion(this).register();
+
+        // Commands
+        getCommand("crs").setExecutor(new CRSCommand());
 
         plugin = this;
         System.out.println("============================= ");
         System.out.println("Combat Ranking System Loaded! ");
         System.out.println("============================= ");
+
+        getServer().broadcastMessage(StringFormatter.formatString(" \n\n       &dCombat Ranking System powered by Cashtann\n\n"));
+
+        commandSuccessOutputPrefix = getPlugin().getConfig().getString("commands.prefix-success");
+        commandFailedOutputPrefix = getPlugin().getConfig().getString("commands.prefix-failed");
 
     }
 
@@ -47,5 +60,13 @@ public final class CombatRankingSystem extends JavaPlugin implements Listener {
 
     public static CombatRankingSystem getPlugin() {
         return plugin;
+    }
+
+    public static String getCommandFailedOutputPrefix() {
+        return commandFailedOutputPrefix;
+    }
+
+    public static String getCommandSuccessOutputPrefix() {
+        return commandSuccessOutputPrefix;
     }
 }

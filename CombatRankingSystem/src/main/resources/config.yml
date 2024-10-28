@@ -36,3 +36,10 @@ chat:
     # Remember, if you want to have space between rating and nickname/rank, add space at the end
     # like in the default configuration
     prefix: '&7[{rating}] '
+
+# Some settings of commands output
+commands:
+  # Remember, the color it 'ends with' will be the color of the command output (you don't want it to be white, so
+  # better leave it as it is)
+  prefix-success: ' #83FF80☺ '
+  prefix-failed: ' #EB3A3A☹ '

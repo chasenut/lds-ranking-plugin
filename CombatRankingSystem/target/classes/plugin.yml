@@ -3,4 +3,15 @@ version: '1'
 main: me.Cashtann.combatRankingSystem.CombatRankingSystem
 api-version: '1.20'
 author: 'Cashtann'
-depend: [ProtocolLib]
+commands:
+  crs:
+    description: 'Advanced Combat Ranking System developed by Cashtann'
+    permission: crs.admin
+    permission-message: You do not have permission to use that command!
+    aliases:
+      - combatrankingsystem
+
+permissions:
+  crs.admin:
+    description: Allows someone to use all CombatRankingSystem commands
+    default: op

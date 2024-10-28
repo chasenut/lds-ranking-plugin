@@ -2,6 +2,7 @@ me\Cashtann\combatRankingSystem\listeners\PlayerJoinListener.class
 me\Cashtann\combatRankingSystem\CombatRankingSystem.class
 me\Cashtann\combatRankingSystem\listeners\PlayerDeathListener.class
 me\Cashtann\combatRankingSystem\listeners\ChatMessageListener.class
+me\Cashtann\combatRankingSystem\commands\CRSCommand.class
 me\Cashtann\combatRankingSystem\ranking\RatingController.class
 me\Cashtann\combatRankingSystem\placeholderapi\CRSPlaceholderExpansion.class
 me\Cashtann\combatRankingSystem\utilities\StringFormatter.class

@@ -1,0 +1,6 @@
+name: CombatRankingSystem
+version: '1'
+main: me.Cashtann.combatRankingSystem.CombatRankingSystem
+api-version: '1.20'
+author: 'Cashtann'
+depend: [ProtocolLib]

@@ -4,7 +4,7 @@
 #        Copyright Cashtann, all rights reserved          #
 #=========================================================#
 
-# If something is not working, make sure you have installed PlaceholderAPI and ProtocolLib
+# If something is not working, make sure you have installed PlaceholderAPI
 
 
 # Placeholders:
@@ -41,5 +41,5 @@ chat:
 commands:
   # Remember, the color it 'ends with' will be the color of the command output (you don't want it to be white, so
   # better leave it as it is)
-  prefix-success: ' #83FF80☺ '
-  prefix-failed: ' #EB3A3A☹ '
+  prefix-success: ' &7[CRS] #83FF80☺ '
+  prefix-failed: ' &7[CRS] #EB3A3A☹ '

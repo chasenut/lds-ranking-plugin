@@ -1,8 +1,14 @@
 C:\Users\kubac\Desktop\MinecraftPlugins\CombatRankingSystem\CombatRankingSystem\src\main\java\me\Cashtann\combatRankingSystem\CombatRankingSystem.java
-C:\Users\kubac\Desktop\MinecraftPlugins\CombatRankingSystem\CombatRankingSystem\src\main\java\me\Cashtann\combatRankingSystem\commands\CRSCommand.java
+C:\Users\kubac\Desktop\MinecraftPlugins\CombatRankingSystem\CombatRankingSystem\src\main\java\me\Cashtann\combatRankingSystem\commands\CRSCommandManager.java
+C:\Users\kubac\Desktop\MinecraftPlugins\CombatRankingSystem\CombatRankingSystem\src\main\java\me\Cashtann\combatRankingSystem\commands\CRSHelpCommand.java
+C:\Users\kubac\Desktop\MinecraftPlugins\CombatRankingSystem\CombatRankingSystem\src\main\java\me\Cashtann\combatRankingSystem\commands\CRSInfoCommand.java
+C:\Users\kubac\Desktop\MinecraftPlugins\CombatRankingSystem\CombatRankingSystem\src\main\java\me\Cashtann\combatRankingSystem\commands\CRSReloadCommand.java
+C:\Users\kubac\Desktop\MinecraftPlugins\CombatRankingSystem\CombatRankingSystem\src\main\java\me\Cashtann\combatRankingSystem\commands\CRSSetCommand.java
+C:\Users\kubac\Desktop\MinecraftPlugins\CombatRankingSystem\CombatRankingSystem\src\main\java\me\Cashtann\combatRankingSystem\commands\CRSSubCommand.java
 C:\Users\kubac\Desktop\MinecraftPlugins\CombatRankingSystem\CombatRankingSystem\src\main\java\me\Cashtann\combatRankingSystem\listeners\ChatMessageListener.java
 C:\Users\kubac\Desktop\MinecraftPlugins\CombatRankingSystem\CombatRankingSystem\src\main\java\me\Cashtann\combatRankingSystem\listeners\PlayerDeathListener.java
 C:\Users\kubac\Desktop\MinecraftPlugins\CombatRankingSystem\CombatRankingSystem\src\main\java\me\Cashtann\combatRankingSystem\listeners\PlayerJoinListener.java
 C:\Users\kubac\Desktop\MinecraftPlugins\CombatRankingSystem\CombatRankingSystem\src\main\java\me\Cashtann\combatRankingSystem\placeholderapi\CRSPlaceholderExpansion.java
 C:\Users\kubac\Desktop\MinecraftPlugins\CombatRankingSystem\CombatRankingSystem\src\main\java\me\Cashtann\combatRankingSystem\ranking\RatingController.java
+C:\Users\kubac\Desktop\MinecraftPlugins\CombatRankingSystem\CombatRankingSystem\src\main\java\me\Cashtann\combatRankingSystem\utilities\PlayerMessage.java
 C:\Users\kubac\Desktop\MinecraftPlugins\CombatRankingSystem\CombatRankingSystem\src\main\java\me\Cashtann\combatRankingSystem\utilities\StringFormatter.java

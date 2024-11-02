@@ -1,6 +1,6 @@
 package me.Cashtann.combatRankingSystem;
 
-import me.Cashtann.combatRankingSystem.commands.CRSCommand;
+import me.Cashtann.combatRankingSystem.commands.CRSCommandManager;
 import me.Cashtann.combatRankingSystem.listeners.ChatMessageListener;
 import me.Cashtann.combatRankingSystem.listeners.PlayerDeathListener;
 import me.Cashtann.combatRankingSystem.listeners.PlayerJoinListener;
@@ -37,7 +37,7 @@ public final class CombatRankingSystem extends JavaPlugin implements Listener {
         new CRSPlaceholderExpansion(this).register();
 
         // Commands
-        getCommand("crs").setExecutor(new CRSCommand());
+        getCommand("crs").setExecutor(new CRSCommandManager());
 
         plugin = this;
         System.out.println("============================= ");

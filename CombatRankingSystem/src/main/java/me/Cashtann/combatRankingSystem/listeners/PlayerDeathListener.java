@@ -23,10 +23,13 @@ public class PlayerDeathListener implements Listener {
 
         if (killer != null && player != null) {
             double multiplier = plugin.getConfig().getDouble("combat-score-modifier");
-            int difference = RatingController.getMultipliedPlayerCombatRating(player, multiplier);
+            int difference = (int) (RatingController.getPlayerCombatRating(player) * multiplier);
 
-            RatingController.addPlayerCombatRating(killer, difference);
-            RatingController.subtractPlayerCombatRating(player, difference);
+            int newKillerRating = RatingController.getPlayerCombatRating(killer) + difference;
+            int newPlayerRating = RatingController.getPlayerCombatRating(player) - difference;
+
+            RatingController.setPlayerCombatRating(killer, newKillerRating);
+            RatingController.setPlayerCombatRating(player, newPlayerRating);
 
             String message = this.plugin.getConfig().getString("kill-message");
             message = message.replace("{player}", player.getName());
@@ -35,9 +38,10 @@ public class PlayerDeathListener implements Listener {
             message = message.replace("{killer_diff}", String.valueOf(difference));
 
             plugin.getServer().broadcastMessage(StringFormatter.formatString(message));
-        } else {
-            plugin.getServer().getLogger().info("[CombatRankingSystem] Ktoś zginąl nie z rąk innego gracza!");
         }
+//        else {
+//            plugin.getServer().getLogger().info("[CombatRankingSystem] Ktoś zginąl nie z rąk innego gracza!");
+//        }
 
     }
 }

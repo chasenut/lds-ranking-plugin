@@ -22,7 +22,7 @@ public class ChatMessageListener implements Listener {
 
         if (plugin.getConfig().getBoolean("chat.rating.enabled")) {
             String prefix = plugin.getConfig().getString("chat.rating.prefix");
-            prefix = prefix.replace("{rating}", String.valueOf(RatingController.getPlayerCombatRating(sender)));
+            prefix = prefix.replace("{rating}", String.valueOf(CombatRankingSystem.getPlayerStatsCache().get(sender.getUniqueId()).getCombatRating()));
             prefix = StringFormatter.formatString(prefix);
 
             String format = prefix + event.getFormat();

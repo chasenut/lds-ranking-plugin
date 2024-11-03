@@ -31,13 +31,15 @@ public class CRSHelpCommand extends CRSSubCommand {
 
     @Override
     public void perform(Player player, String[] args) {
-        PlayerMessage.sendCommandOutput(true, player, "-------------------------------");
+        PlayerMessage.sendCommandOutput(true, player, "----Combat-Ranking-System+----");
+        PlayerMessage.sendCommandOutput(true, player, " ");
         PlayerMessage.sendCommandOutput(true, player, " All available commands:");
         for (int i = 0; i < getSubcommands().size(); i++) {
             String commandMessage = "  ▪ " + getSubcommands().get(i).getSyntax() + " - " + getSubcommands().get(i).getDescription();
             PlayerMessage.sendCommandOutput(true, player, commandMessage);
         }
-        PlayerMessage.sendCommandOutput(true, player, "-------------------------------");
+        PlayerMessage.sendCommandOutput(true, player, " ");
+        PlayerMessage.sendCommandOutput(true, player, "------Powered-by-Cashtann-----");
     }
 
     @Override

@@ -1,6 +1,6 @@
 package me.Cashtann.combatRankingSystem.commands;
 
-import me.Cashtann.combatRankingSystem.ranking.RatingController;
+import me.Cashtann.combatRankingSystem.CombatRankingSystem;
 import me.Cashtann.combatRankingSystem.utilities.PlayerMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -32,13 +32,13 @@ public class CRSInfoCommand extends CRSSubCommand {
 
                 String message = target.getName();
                 message += "'s rating is ";
-                message += String.valueOf(RatingController.getPlayerCombatRating(target));
+                message += String.valueOf(CombatRankingSystem.getPlayerStatsCache().get(target.getUniqueId()).getCombatRating());
                 PlayerMessage.sendCommandOutput(true, player, message);
             } else {
                 PlayerMessage.sendCommandOutput(false, player, "Specified player either doesn't exist or is offline");
             }
         } else if (args.length == 1) {
-            PlayerMessage.sendCommandOutput(false, player, "You did not pass the player name, please try again");
+            PlayerMessage.sendCommandOutput(false, player, "You did not provide the player name, please try again");
         }
     }
 
@@ -49,8 +49,8 @@ public class CRSInfoCommand extends CRSSubCommand {
             List<String> playerNames = new ArrayList<>();
             Player[] players = new Player[Bukkit.getServer().getOnlinePlayers().size()];
             Bukkit.getServer().getOnlinePlayers().toArray(players);
-            for (int i = 0; i < players.length; i++) {
-                playerNames.add(players[i].getName());
+            for (Player value : players) {
+                playerNames.add(value.getName());
             }
             return playerNames;
         }

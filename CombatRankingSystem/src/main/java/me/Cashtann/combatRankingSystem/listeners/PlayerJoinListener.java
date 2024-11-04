@@ -1,8 +1,6 @@
 package me.Cashtann.combatRankingSystem.listeners;
 
-import me.Cashtann.combatRankingSystem.CombatRankingSystem;
 import me.Cashtann.combatRankingSystem.files.PlayersStatsContainer;
-import me.Cashtann.combatRankingSystem.ranking.RatingController;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

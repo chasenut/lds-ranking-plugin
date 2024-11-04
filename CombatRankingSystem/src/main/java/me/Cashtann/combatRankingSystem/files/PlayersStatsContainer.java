@@ -18,7 +18,7 @@ public class PlayersStatsContainer {
 
     private static File statsFile;
     private static FileConfiguration statsConfig;
-    private static HashMap<UUID, PlayerStats> playerStatsCache = CombatRankingSystem.getPlayerStatsCache();
+    private static HashMap<UUID, PlayerStats> playerStatsCache = CombatRankingSystem.getPlugin().getPlayerStatsCache();
 
     public static void setup() {
         statsFile = new File(Bukkit.getServer().getPluginManager().getPlugin("CombatRankingSystem").getDataFolder(), "data.yml");
@@ -78,7 +78,7 @@ public class PlayersStatsContainer {
     }
 
     public static boolean containsOrInCacheUUID(UUID uuid) {
-        if (CombatRankingSystem.getPlayerStatsCache().containsKey(uuid)) {
+        if (CombatRankingSystem.getPlugin().getPlayerStatsCache().containsKey(uuid)) {
             return true;
         } else return statsConfig.contains("players." + uuid.toString());
     }

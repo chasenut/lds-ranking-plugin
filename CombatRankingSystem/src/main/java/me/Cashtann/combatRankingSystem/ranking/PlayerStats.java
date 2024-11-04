@@ -1,5 +1,7 @@
 package me.Cashtann.combatRankingSystem.ranking;
 
+import org.bukkit.Bukkit;
+
 public class PlayerStats {
     private int combatRating;
     private int kills;

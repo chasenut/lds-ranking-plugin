@@ -1,9 +1,7 @@
 package me.Cashtann.combatRankingSystem.commands;
 
 import me.Cashtann.combatRankingSystem.CombatRankingSystem;
-import me.Cashtann.combatRankingSystem.ranking.RatingController;
 import me.Cashtann.combatRankingSystem.utilities.PlayerMessage;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.List;

@@ -14,12 +14,10 @@ public class SavePlayerStatsTask extends BukkitRunnable {
 
     CombatRankingSystem plugin;
 
-    public SavePlayerStatsTask(HashMap<UUID, PlayerStats> playerStatsCache, CombatRankingSystem plugin) {
-        this.playerStatsCache = playerStatsCache;
+    public SavePlayerStatsTask(CombatRankingSystem plugin) {
         this.plugin = plugin;
     }
 
-    private HashMap<UUID, PlayerStats> playerStatsCache;
 
     @Override
     public void run() {
@@ -29,6 +27,6 @@ public class SavePlayerStatsTask extends BukkitRunnable {
     }
 
     private void saveCacheToConfig() {
-        CombatRankingSystem.saveCacheToConfig();
+        plugin.saveCacheToConfig();
     }
 }

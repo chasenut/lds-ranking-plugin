@@ -1,7 +1,6 @@
 package me.Cashtann.combatRankingSystem.listeners;
 
 import me.Cashtann.combatRankingSystem.CombatRankingSystem;
-import me.Cashtann.combatRankingSystem.ranking.RatingController;
 import me.Cashtann.combatRankingSystem.utilities.StringFormatter;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -22,7 +21,7 @@ public class ChatMessageListener implements Listener {
 
         if (plugin.getConfig().getBoolean("chat.rating.enabled")) {
             String prefix = plugin.getConfig().getString("chat.rating.prefix");
-            prefix = prefix.replace("{rating}", String.valueOf(CombatRankingSystem.getPlayerStatsCache().get(sender.getUniqueId()).getCombatRating()));
+            prefix = prefix.replace("{rating}", String.valueOf(plugin.getPlayerStatsCache().get(sender.getUniqueId()).getCombatRating()));
             prefix = StringFormatter.formatString(prefix);
 
             String format = prefix + event.getFormat();

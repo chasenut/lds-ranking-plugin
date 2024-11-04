@@ -3,7 +3,6 @@ package me.Cashtann.combatRankingSystem.listeners;
 import me.Cashtann.combatRankingSystem.CombatRankingSystem;
 import me.Cashtann.combatRankingSystem.files.PlayersStatsContainer;
 import me.Cashtann.combatRankingSystem.ranking.PlayerStats;
-import me.Cashtann.combatRankingSystem.ranking.RatingController;
 import me.Cashtann.combatRankingSystem.utilities.StringFormatter;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,11 +15,9 @@ import java.util.UUID;
 public class PlayerDeathListener implements Listener {
 
     private final CombatRankingSystem plugin;
-    private HashMap<UUID, PlayerStats> playerStatsCache;
 
-    public PlayerDeathListener(CombatRankingSystem plugin, HashMap<UUID, PlayerStats> playerStatsCache) {
+    public PlayerDeathListener(CombatRankingSystem plugin) {
         this.plugin = plugin;
-        this.playerStatsCache = playerStatsCache;
     }
 
     @EventHandler
@@ -31,6 +28,7 @@ public class PlayerDeathListener implements Listener {
         if (killer != null && player != null) {
             // Update kills for killer
             UUID killerUUID = killer.getUniqueId();
+            HashMap<UUID, PlayerStats> playerStatsCache = CombatRankingSystem.getPlugin().getPlayerStatsCache();
             if (!playerStatsCache.containsKey(killerUUID)) {
                 PlayersStatsContainer.getPlayerStats(killerUUID); // loads if are empty
             }
@@ -38,7 +36,7 @@ public class PlayerDeathListener implements Listener {
             killerStats.setKills(killerStats.getKills() + 1);
 
             // Update deaths for player
-            UUID playerUUID = killer.getUniqueId();
+            UUID playerUUID = player.getUniqueId();
             if (!playerStatsCache.containsKey(playerUUID)) {
                 PlayersStatsContainer.getPlayerStats(playerUUID); // loads if are empty
             }
@@ -63,9 +61,6 @@ public class PlayerDeathListener implements Listener {
 
             plugin.getServer().broadcastMessage(StringFormatter.formatString(message));
         }
-//        else {
-//            plugin.getServer().getLogger().info("[CombatRankingSystem] Ktoś zginąl nie z rąk innego gracza!");
-//        }
 
     }
 }

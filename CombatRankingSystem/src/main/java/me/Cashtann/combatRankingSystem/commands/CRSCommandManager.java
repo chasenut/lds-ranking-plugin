@@ -1,8 +1,7 @@
 package me.Cashtann.combatRankingSystem.commands;
 
-import me.Cashtann.combatRankingSystem.utilities.PlayerMessage;
+import me.Cashtann.combatRankingSystem.CombatRankingSystem;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
@@ -30,9 +29,11 @@ public class CRSCommandManager implements TabExecutor {
 
         if (commandSender instanceof Player player) {
             if (strings.length > 0) {
+                boolean validCommandExecuted = false;
                 for (int i = 0; i < subcommands.size(); i++) {
                     if (strings[0].equalsIgnoreCase(getSubcommands().get(i).getName())) {
                         getSubcommands().get(i).perform(player, strings);
+                        validCommandExecuted = true;
                     }
                 }
             } else {

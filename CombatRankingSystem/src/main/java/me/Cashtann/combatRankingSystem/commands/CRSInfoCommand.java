@@ -32,7 +32,7 @@ public class CRSInfoCommand extends CRSSubCommand {
 
                 String message = target.getName();
                 message += "'s rating is ";
-                message += String.valueOf(CombatRankingSystem.getPlayerStatsCache().get(target.getUniqueId()).getCombatRating());
+                message += String.valueOf(CombatRankingSystem.getPlugin().getPlayerStatsCache().get(target.getUniqueId()).getCombatRating());
                 PlayerMessage.sendCommandOutput(true, player, message);
             } else {
                 PlayerMessage.sendCommandOutput(false, player, "Specified player either doesn't exist or is offline");

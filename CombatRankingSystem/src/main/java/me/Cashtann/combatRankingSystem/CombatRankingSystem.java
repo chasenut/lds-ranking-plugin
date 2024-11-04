@@ -30,7 +30,7 @@ public final class CombatRankingSystem extends JavaPlugin implements Listener {
     private static String commandSuccessOutputPrefix;
     private static String commandFailedOutputPrefix;
 
-    private static HashMap<UUID, PlayerStats> playerStatsCache = new HashMap<>();
+    private HashMap<UUID, PlayerStats> playerStatsCache = new HashMap<>();
 
     @Override
     public void onEnable() {
@@ -47,12 +47,12 @@ public final class CombatRankingSystem extends JavaPlugin implements Listener {
         PlayersStatsContainer.saveConfig();
         // Saving the config on runtime
         loadOnlinePlayersStats();
-        BukkitTask savePlayerStats = new SavePlayerStatsTask(playerStatsCache, this).runTaskTimer(this, 0L, 200L);
+        BukkitTask savePlayerStats = new SavePlayerStatsTask(this).runTaskTimer(this, 0L, 200L);
 
         // Listeners register
         getServer().getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(new ChatMessageListener(this), this);
-        getServer().getPluginManager().registerEvents(new PlayerDeathListener(this, playerStatsCache), this);
+        getServer().getPluginManager().registerEvents(new PlayerDeathListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
 
         // PlaceholderAPI register
@@ -90,12 +90,12 @@ public final class CombatRankingSystem extends JavaPlugin implements Listener {
         return commandSuccessOutputPrefix;
     }
 
-    public static HashMap<UUID, PlayerStats> getPlayerStatsCache() {
-        return playerStatsCache;
+    public HashMap<UUID, PlayerStats> getPlayerStatsCache() {
+        return this.playerStatsCache;
     }
 
-    public static void setPlayerStatsCache(HashMap<UUID, PlayerStats> playerStatsCache) {
-        CombatRankingSystem.playerStatsCache = playerStatsCache;
+    public void setPlayerStatsCache(HashMap<UUID, PlayerStats> playerStatsCache) {
+        this.playerStatsCache = playerStatsCache;
     }
 
     private void loadOnlinePlayersStats() {
@@ -106,11 +106,11 @@ public final class CombatRankingSystem extends JavaPlugin implements Listener {
         }
     }
 
-    public static void saveCacheToConfig() {
+    public void saveCacheToConfig() {
         FileConfiguration dataConfig = PlayersStatsContainer.getConfig();
         List<UUID> playersToRemoveFromCache = new ArrayList<>();
-        for (UUID uuid : playerStatsCache.keySet()) {
-            PlayerStats stats = playerStatsCache.get(uuid);
+        for (UUID uuid : this.playerStatsCache.keySet()) {
+            PlayerStats stats = this.playerStatsCache.get(uuid);
             PlayersStatsContainer.addPlayerData(uuid,
                     stats.getCombatRating(),
                     stats.getKills(),

@@ -1,10 +1,7 @@
 package me.Cashtann.combatRankingSystem.placeholderapi;
 
 import me.Cashtann.combatRankingSystem.CombatRankingSystem;
-import me.Cashtann.combatRankingSystem.ranking.RatingController;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
-import org.bukkit.Material;
-import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -40,28 +37,32 @@ public class CRSPlaceholderExpansion extends PlaceholderExpansion {
         }
 
         if (identifier.equals("player_rating")) {
-            int rating = CombatRankingSystem.getPlayerStatsCache().get(player.getUniqueId()).getCombatRating();
+            int rating = plugin.getPlayerStatsCache().get(player.getUniqueId()).getCombatRating();
             return String.valueOf(rating);
         } else if (identifier.equals("player_kills")) {
-            int kills = player.getStatistic(Statistic.PLAYER_KILLS);
+            int kills = plugin.getPlayerStatsCache().get(player.getUniqueId()).getKills();
             return String.valueOf(kills);
         } else if (identifier.equals("player_deaths")) {
-            int deaths = player.getStatistic(Statistic.DEATHS);
+            int deaths = plugin.getPlayerStatsCache().get(player.getUniqueId()).getDeaths();
             return String.valueOf(deaths);
         } else if (identifier.equals("player_mined_stone")) {
-            int mined = player.getStatistic(Statistic.MINE_BLOCK, Material.STONE);
+            int mined = plugin.getPlayerStatsCache().get(player.getUniqueId()).getMinedStone();
             return String.valueOf(mined);
-        } else if (identifier.equals("player_distance")) { //traveled distance
-            int distance = player.getStatistic(Statistic.WALK_ONE_CM);
+        } else if (identifier.equals("player_distance")) { //traveled distance (cm)
+            int distance = plugin.getPlayerStatsCache().get(player.getUniqueId()).getDistance_cm();
+            return String.valueOf(distance);
+        } else if (identifier.equals("player_distance_meters")) { //traveled distance (meters)
+            int distance = plugin.getPlayerStatsCache().get(player.getUniqueId()).getDistance_cm() / 100;
             return String.valueOf(distance);
         } else if (identifier.equals("player_playtime_hours")) {
-            double playtime = (double) player.getStatistic(Statistic.PLAY_ONE_MINUTE) / 20 / 60 / 60; //in hours
+            double playtime = (double) plugin.getPlayerStatsCache().get(player.getUniqueId()).getPlaytime_t() / 20 / 60 / 60; //in hours
             DecimalFormat df = new DecimalFormat("#.00");
             return df.format(playtime);
         } else if (identifier.equals("player_playtime_minutes")) {
-            double playtime = (double) player.getStatistic(Statistic.PLAY_ONE_MINUTE) / 20 / 60; //in minutes
-            DecimalFormat df = new DecimalFormat("#.00");
-            return df.format(playtime);
+            double playtime = (double) plugin.getPlayerStatsCache().get(player.getUniqueId()).getPlaytime_t() / 20 / 60; //in minutes
+//            DecimalFormat df = new DecimalFormat("#.00");
+//            return df.format(playtime);
+            return String.valueOf(Math.round(playtime));
         } else if (identifier.equals("player_balance")) {
             //int balance = < logic here >
             return String.valueOf(0);

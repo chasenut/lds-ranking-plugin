@@ -2,7 +2,6 @@ package me.Cashtann.combatRankingSystem.commands;
 
 import me.Cashtann.combatRankingSystem.CombatRankingSystem;
 import me.Cashtann.combatRankingSystem.files.PlayersStatsContainer;
-import me.Cashtann.combatRankingSystem.ranking.RatingController;
 import me.Cashtann.combatRankingSystem.utilities.PlayerMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
@@ -33,6 +32,9 @@ public class CRSSetCommand extends CRSSubCommand {
         if (args.length > 2) {
             //if (Bukkit.getPlayerExact(args[1]) != null) {
 
+            // Getting an instance of the plugin
+            CombatRankingSystem plugin = CombatRankingSystem.getPlugin();
+
             String targetName = args[1];
             // Get OfflinePlayer
             OfflinePlayer offlineTarget = Bukkit.getOfflinePlayer(targetName);
@@ -58,18 +60,18 @@ public class CRSSetCommand extends CRSSubCommand {
 
             if (Objects.equals(scoreType, "combatRating")) {
                 if (onlineTarget != null) { // Target is online
-                    CombatRankingSystem.getPlayerStatsCache().get(onlineTarget.getUniqueId()).setCombatRating(newValue);
+                    plugin.getPlayerStatsCache().get(onlineTarget.getUniqueId()).setCombatRating(newValue);
                     String message = targetName;
-                    message += "'s rating set to ";
+                    message += "'s combat rating set to ";
                     message += String.valueOf(newValue);
                     PlayerMessage.sendCommandOutput(true, player, message);
                 } else { // Target if offline
                     if (offlineTarget.hasPlayedBefore()) {
                         // Loads the player stats from the config if they've played before
                         PlayersStatsContainer.loadOrCreatePlayerStats(targetUUID);
-                        CombatRankingSystem.getPlayerStatsCache().get(offlineTarget.getUniqueId()).setCombatRating(newValue);
+                        plugin.getPlayerStatsCache().get(offlineTarget.getUniqueId()).setCombatRating(newValue);
                         String message = targetName;
-                        message += "'s rating set to ";
+                        message += "'s combat rating set to ";
                         message += String.valueOf(newValue);
                         PlayerMessage.sendCommandOutput(true, player, message);
                     } else {
@@ -77,19 +79,113 @@ public class CRSSetCommand extends CRSSubCommand {
                     }
                 }
             } else if (Objects.equals(scoreType, "kills")) {
-
+                if (onlineTarget != null) { // Target is online
+                    plugin.getPlayerStatsCache().get(onlineTarget.getUniqueId()).setKills(newValue);
+                    String message = targetName;
+                    message += "'s kills set to ";
+                    message += String.valueOf(newValue);
+                    PlayerMessage.sendCommandOutput(true, player, message);
+                } else { // Target if offline
+                    if (offlineTarget.hasPlayedBefore()) {
+                        // Loads the player stats from the config if they've played before
+                        PlayersStatsContainer.loadOrCreatePlayerStats(targetUUID);
+                        plugin.getPlayerStatsCache().get(offlineTarget.getUniqueId()).setKills(newValue);
+                        String message = targetName;
+                        message += "'s kills set to ";
+                        message += String.valueOf(newValue);
+                        PlayerMessage.sendCommandOutput(true, player, message);
+                    } else {
+                        errorPlayerHasNotPlayedBefore(player);
+                    }
+                }
             } else if (Objects.equals(scoreType, "deaths")) {
-
+                if (onlineTarget != null) { // Target is online
+                    plugin.getPlayerStatsCache().get(onlineTarget.getUniqueId()).setDeaths(newValue);
+                    String message = targetName;
+                    message += "'s deaths set to ";
+                    message += String.valueOf(newValue);
+                    PlayerMessage.sendCommandOutput(true, player, message);
+                } else { // Target if offline
+                    if (offlineTarget.hasPlayedBefore()) {
+                        // Loads the player stats from the config if they've played before
+                        PlayersStatsContainer.loadOrCreatePlayerStats(targetUUID);
+                        plugin.getPlayerStatsCache().get(offlineTarget.getUniqueId()).setDeaths(newValue);
+                        String message = targetName;
+                        message += "'s deaths set to ";
+                        message += String.valueOf(newValue);
+                        PlayerMessage.sendCommandOutput(true, player, message);
+                    } else {
+                        errorPlayerHasNotPlayedBefore(player);
+                    }
+                }
             } else if (Objects.equals(scoreType, "minedStone")) {
-
+                if (onlineTarget != null) { // Target is online
+                    plugin.getPlayerStatsCache().get(onlineTarget.getUniqueId()).setMinedStone(newValue);
+                    String message = targetName;
+                    message += "'s mined stone set to ";
+                    message += String.valueOf(newValue);
+                    PlayerMessage.sendCommandOutput(true, player, message);
+                } else { // Target if offline
+                    if (offlineTarget.hasPlayedBefore()) {
+                        // Loads the player stats from the config if they've played before
+                        PlayersStatsContainer.loadOrCreatePlayerStats(targetUUID);
+                        plugin.getPlayerStatsCache().get(offlineTarget.getUniqueId()).setMinedStone(newValue);
+                        String message = targetName;
+                        message += "'s mined stone set to ";
+                        message += String.valueOf(newValue);
+                        PlayerMessage.sendCommandOutput(true, player, message);
+                    } else {
+                        errorPlayerHasNotPlayedBefore(player);
+                    }
+                }
             } else if (Objects.equals(scoreType, "distance")) {
-
+                if (onlineTarget != null) { // Target is online
+                    plugin.getPlayerStatsCache().get(onlineTarget.getUniqueId()).setDistance_cm(newValue);
+                    String message = targetName;
+                    message += "'s distance set to ";
+                    message += String.valueOf(newValue);
+                    message += " cm";
+                    PlayerMessage.sendCommandOutput(true, player, message);
+                } else { // Target if offline
+                    if (offlineTarget.hasPlayedBefore()) {
+                        // Loads the player stats from the config if they've played before
+                        PlayersStatsContainer.loadOrCreatePlayerStats(targetUUID);
+                        plugin.getPlayerStatsCache().get(offlineTarget.getUniqueId()).setDistance_cm(newValue);
+                        String message = targetName;
+                        message += "'s distance set to ";
+                        message += String.valueOf(newValue);
+                        message += " cm";
+                        PlayerMessage.sendCommandOutput(true, player, message);
+                    } else {
+                        errorPlayerHasNotPlayedBefore(player);
+                    }
+                }
             } else if (Objects.equals(scoreType, "playtime")) {
-
+                if (onlineTarget != null) { // Target is online
+                    plugin.getPlayerStatsCache().get(onlineTarget.getUniqueId()).setPlaytime_t(newValue);
+                    String message = targetName;
+                    message += "'s playtime set to ";
+                    message += String.valueOf(newValue);
+                    message += " ticks";
+                    PlayerMessage.sendCommandOutput(true, player, message);
+                } else { // Target if offline
+                    if (offlineTarget.hasPlayedBefore()) {
+                        // Loads the player stats from the config if they've played before
+                        PlayersStatsContainer.loadOrCreatePlayerStats(targetUUID);
+                        plugin.getPlayerStatsCache().get(offlineTarget.getUniqueId()).setPlaytime_t(newValue);
+                        String message = targetName;
+                        message += "'s distance set to ";
+                        message += String.valueOf(newValue);
+                        message += " ticks";
+                        PlayerMessage.sendCommandOutput(true, player, message);
+                    } else {
+                        errorPlayerHasNotPlayedBefore(player);
+                    }
+                }
             }
             //RatingController.setPlayerCombatRating(target, newRating);
-            //CombatRankingSystem.getPlayerStatsCache().get(target.getUniqueId()).setCombatRating(newRating);
-            //CombatRankingSystem.getPlayerStatsCache().get(targetUUID).setCombatRating(newValue);
+            //plugin.getPlayerStatsCache().get(target.getUniqueId()).setCombatRating(newRating);
+            //plugin.getPlayerStatsCache().get(targetUUID).setCombatRating(newValue);
 //            } else {
 //                PlayerMessage.sendCommandOutput(false, player, "Specified player either doesn't exist or is offline");
 //            }

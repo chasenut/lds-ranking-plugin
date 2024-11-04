@@ -14,5 +14,4 @@ me\Cashtann\combatRankingSystem\ranking\PlayerStats.class
 me\Cashtann\combatRankingSystem\tasks\SavePlayerStatsTask.class
 me\Cashtann\combatRankingSystem\commands\CRSSetCommand.class
 me\Cashtann\combatRankingSystem\listeners\PlayerLeaveListener.class
-me\Cashtann\combatRankingSystem\ranking\RatingController.class
 me\Cashtann\combatRankingSystem\utilities\StringFormatter.class

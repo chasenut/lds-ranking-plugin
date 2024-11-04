@@ -63,9 +63,6 @@ public class CRSPlaceholderExpansion extends PlaceholderExpansion {
 //            DecimalFormat df = new DecimalFormat("#.00");
 //            return df.format(playtime);
             return String.valueOf(Math.round(playtime));
-        } else if (identifier.equals("player_balance")) {
-            //int balance = < logic here >
-            return String.valueOf(0);
         }
 
         return "error";

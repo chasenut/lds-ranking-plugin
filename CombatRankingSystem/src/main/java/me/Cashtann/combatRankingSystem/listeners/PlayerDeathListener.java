@@ -52,14 +52,15 @@ public class PlayerDeathListener implements Listener {
             playerStats.setCombatRating(playerStats.getCombatRating() - difference);
 
 
+            if (this.plugin.getConfig().getBoolean("kill-message-enabled")) {
+                String message = this.plugin.getConfig().getString("kill-message");
+                message = message.replace("{player}", player.getName());
+                message = message.replace("{killer}", killer.getName());
+                message = message.replace("{player_diff}", String.valueOf(difference));
+                message = message.replace("{killer_diff}", String.valueOf(difference));
 
-            String message = this.plugin.getConfig().getString("kill-message");
-            message = message.replace("{player}", player.getName());
-            message = message.replace("{killer}", killer.getName());
-            message = message.replace("{player_diff}", String.valueOf(difference));
-            message = message.replace("{killer_diff}", String.valueOf(difference));
-
-            plugin.getServer().broadcastMessage(StringFormatter.formatString(message));
+                plugin.getServer().broadcastMessage(StringFormatter.formatString(message));
+            }
         }
 
     }

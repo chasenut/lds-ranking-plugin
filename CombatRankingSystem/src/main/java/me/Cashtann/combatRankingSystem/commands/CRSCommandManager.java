@@ -1,6 +1,6 @@
 package me.Cashtann.combatRankingSystem.commands;
 
-import me.Cashtann.combatRankingSystem.CombatRankingSystem;
+import me.Cashtann.combatRankingSystem.utilities.PlayerMessage;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -18,7 +18,7 @@ public class CRSCommandManager implements TabExecutor {
     private final CRSHelpCommand helpCommand = new CRSHelpCommand(subcommands);
 
     public CRSCommandManager() {
-        subcommands.add(new CRSInfoCommand());
+        subcommands.add(new CRSGetCommand());
         subcommands.add(new CRSReloadCommand());
         subcommands.add(new CRSSetCommand());
         subcommands.add(helpCommand);
@@ -35,6 +35,9 @@ public class CRSCommandManager implements TabExecutor {
                         getSubcommands().get(i).perform(player, strings);
                         validCommandExecuted = true;
                     }
+                }
+                if (!validCommandExecuted) {
+                    PlayerMessage.sendCommandOutput(false, player, "Unknown subcommand");
                 }
             } else {
                 helpCommand.perform(player, strings);

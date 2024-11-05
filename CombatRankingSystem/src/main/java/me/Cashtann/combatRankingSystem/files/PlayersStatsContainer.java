@@ -2,6 +2,7 @@ package me.Cashtann.combatRankingSystem.files;
 
 import me.Cashtann.combatRankingSystem.CombatRankingSystem;
 import me.Cashtann.combatRankingSystem.ranking.PlayerStats;
+import me.Cashtann.combatRankingSystem.utilities.VariousPlayerStatsUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Statistic;
@@ -37,6 +38,10 @@ public class PlayersStatsContainer {
 
     public static void addPlayerData(UUID playerUUID, int combatRating, int kills, int deaths, int minedStone, int distance_cm, int playtime_t) {
         String path = "players." + playerUUID.toString();
+        Player player = Bukkit.getPlayer(playerUUID);
+        if (player != null) {
+            statsConfig.set(path + ".playerName", player.getName());
+        }
         statsConfig.set(path + ".combatRating", combatRating);
         statsConfig.set(path + ".kills", kills);
         statsConfig.set(path + ".deaths", deaths);
@@ -65,7 +70,12 @@ public class PlayersStatsContainer {
         if (statsConfig.contains("players." + uuid.toString())) {
             playerStatsCache.put(uuid, getPlayerStats(uuid));
         } else {
-            int walked_distance = player.getStatistic(Statistic.WALK_ONE_CM) + player.getStatistic(Statistic.CROUCH_ONE_CM) + player.getStatistic(Statistic.SPRINT_ONE_CM);
+            int walked_distance;
+            if (player != null) {
+                walked_distance = VariousPlayerStatsUtils.getPlayerWalkedDistanceByFoot(player);
+            } else {
+                walked_distance = 0;
+            }
             PlayerStats defaultStats = new PlayerStats(CombatRankingSystem.getPlugin().getConfig().getInt("initial-combat-rating"),
                     player.getStatistic(Statistic.PLAYER_KILLS),
                     player.getStatistic(Statistic.DEATHS),

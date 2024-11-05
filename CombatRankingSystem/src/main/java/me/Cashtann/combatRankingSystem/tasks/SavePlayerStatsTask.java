@@ -24,6 +24,7 @@ public class SavePlayerStatsTask extends BukkitRunnable {
         PlayersStatsContainer.saveConfig();
         Bukkit.getServer().getLogger().info("Saved players stats");
         saveCacheToConfig();
+        plugin.getLeaderboardManager().updateLeaderboards();
     }
 
     private void saveCacheToConfig() {

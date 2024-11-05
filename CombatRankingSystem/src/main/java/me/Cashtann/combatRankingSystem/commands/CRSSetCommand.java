@@ -4,7 +4,9 @@ import me.Cashtann.combatRankingSystem.CombatRankingSystem;
 import me.Cashtann.combatRankingSystem.files.PlayersStatsContainer;
 import me.Cashtann.combatRankingSystem.utilities.PlayerMessage;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 
 import java.util.*;
@@ -85,6 +87,7 @@ public class CRSSetCommand extends CRSSubCommand {
                     message += "'s kills set to ";
                     message += String.valueOf(newValue);
                     PlayerMessage.sendCommandOutput(true, player, message);
+                    player.setStatistic(Statistic.PLAYER_KILLS, newValue);
                 } else { // Target if offline
                     if (offlineTarget.hasPlayedBefore()) {
                         // Loads the player stats from the config if they've played before
@@ -105,6 +108,7 @@ public class CRSSetCommand extends CRSSubCommand {
                     message += "'s deaths set to ";
                     message += String.valueOf(newValue);
                     PlayerMessage.sendCommandOutput(true, player, message);
+                    player.setStatistic(Statistic.DEATHS, newValue);
                 } else { // Target if offline
                     if (offlineTarget.hasPlayedBefore()) {
                         // Loads the player stats from the config if they've played before
@@ -125,6 +129,7 @@ public class CRSSetCommand extends CRSSubCommand {
                     message += "'s mined stone set to ";
                     message += String.valueOf(newValue);
                     PlayerMessage.sendCommandOutput(true, player, message);
+                    player.setStatistic(Statistic.MINE_BLOCK, Material.STONE, newValue);
                 } else { // Target if offline
                     if (offlineTarget.hasPlayedBefore()) {
                         // Loads the player stats from the config if they've played before
@@ -146,6 +151,9 @@ public class CRSSetCommand extends CRSSubCommand {
                     message += String.valueOf(newValue);
                     message += " cm";
                     PlayerMessage.sendCommandOutput(true, player, message);
+                    player.setStatistic(Statistic.CROUCH_ONE_CM, newValue / 3);
+                    player.setStatistic(Statistic.WALK_ONE_CM, newValue / 3);
+                    player.setStatistic(Statistic.SPRINT_ONE_CM, newValue / 3);
                 } else { // Target if offline
                     if (offlineTarget.hasPlayedBefore()) {
                         // Loads the player stats from the config if they've played before
@@ -168,6 +176,7 @@ public class CRSSetCommand extends CRSSubCommand {
                     message += String.valueOf(newValue);
                     message += " ticks";
                     PlayerMessage.sendCommandOutput(true, player, message);
+                    player.setStatistic(Statistic.PLAY_ONE_MINUTE, newValue);
                 } else { // Target if offline
                     if (offlineTarget.hasPlayedBefore()) {
                         // Loads the player stats from the config if they've played before

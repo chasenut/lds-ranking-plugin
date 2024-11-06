@@ -15,6 +15,7 @@ import me.Cashtann.combatRankingSystem.utilities.StringFormatter;
 import me.Cashtann.combatRankingSystem.utilities.VariousPlayerStatsUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.Statistic;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -55,7 +56,7 @@ public final class CombatRankingSystem extends JavaPlugin implements Listener {
         // Saving the config on runtime
         loadOnlinePlayersStats();
         long time_between_saves = plugin.getConfig().getLong("data-save");
-        BukkitTask savePlayerStats = new SavePlayerStatsTask(this).runTaskTimer(this, 0L, time_between_saves);
+        BukkitTask savePlayerStats = new SavePlayerStatsTask(this).runTaskTimer(this, 0L, time_between_saves * 20);
 
         // Leaderboards
         leaderboardManager = new LeaderboardManager();
@@ -78,7 +79,8 @@ public final class CombatRankingSystem extends JavaPlugin implements Listener {
         getLogger().info("Combat Ranking System Loaded! ");
         getLogger().info("============================= ");
 
-        getServer().broadcastMessage(StringFormatter.formatString(" \n\n       &dCombat Ranking System powered by Cashtann\n\n"));
+        //getServer().broadcastMessage(StringFormatter.formatString(" \n\n       &dCombat Ranking System powered by Cashtann\n\n"));
+        getServer().broadcastMessage(StringFormatter.formatString("&7Combat Ranking System+ powered by Cashtann loaded!"));
 
         commandSuccessOutputPrefix = getPlugin().getConfig().getString("commands.prefix-success");
         commandFailedOutputPrefix = getPlugin().getConfig().getString("commands.prefix-failed");

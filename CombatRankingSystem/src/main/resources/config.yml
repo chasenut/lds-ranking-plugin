@@ -55,11 +55,19 @@ commands:
   prefix-failed: ' &7[CRS] &#EA5252☹ '
 
 topplayers:
+  # Styles of /topplayers menu
   inventory-name: '&8Topki serwerowe'
-  main-style: '&#7926F4&l' # purple
-  counter-style: '&#7926F4'
+  main-style: '&#EDB625&l'
+  counter-style: '&#EDB625'
   text-style: '&f'
-  score-style: '&#36A0F4'
+  score-style: '&#F1C85C'
+
+  # {time} - placeholder for the time (in seconds) leaderboard refreshes
+  bottom-note: '&7Ranking jest odświeżany co {time} sekund'
+
+  style:
+
+
 
 # Available Placeholders (PlaceholerAPI):
 

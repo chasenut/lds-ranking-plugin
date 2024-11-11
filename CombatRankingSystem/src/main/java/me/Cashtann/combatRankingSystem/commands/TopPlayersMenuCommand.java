@@ -50,7 +50,7 @@ public class TopPlayersMenuCommand implements TabExecutor {
             inventory.setItem(11, createNewRankingItem(player, Material.DIAMOND_SWORD, "kills", "Topka zabójstw"));
             inventory.setItem(12, createNewRankingItem(player, Material.SKELETON_SKULL, "deaths", "Topka śmierci"));
             inventory.setItem(13, createNewRankingItem(player, Material.STONE, "minedStone", "Topka wykopanego kamienia"));
-            inventory.setItem(14, createNewRankingItem(player, Material.LEATHER_BOOTS, "distance", "Topka kroków"));
+            inventory.setItem(14, createNewRankingItem(player, Material.LEATHER_BOOTS, "distance", "Topka dystansu"));
             inventory.setItem(15, createNewRankingItem(player, Material.CLOCK, "playtime", "Topka czasu"));
             inventory.setItem(16, createNewBaltopRankingItem(player, Material.GOLD_INGOT, "Topka pieniędzy"));
 
@@ -110,7 +110,7 @@ public class TopPlayersMenuCommand implements TabExecutor {
         List<String> finalLore = new ArrayList<>();
         finalLore.add(" ");
         finalLore.add(StringFormatter.formatString(text_style + "Twoja wartość: " + score_style + "$" + playerScore));
-        finalLore.add(StringFormatter.formatString(text_style + "Twoja pozycja: " + score_style + PlaceholderAPI.setPlaceholders(player, "%essentials_baltop_rank%")));
+        //finalLore.add(StringFormatter.formatString(text_style + "Twoja pozycja: " + score_style + PlaceholderAPI.setPlaceholders(player, "%essentials_baltop_rank%")));
         finalLore.add(" ");
 
         for (int i = 0; i < 10; i++) {
@@ -153,7 +153,7 @@ public class TopPlayersMenuCommand implements TabExecutor {
         List<String> finalLore = new ArrayList<>();
         finalLore.add(" ");
         finalLore.add(StringFormatter.formatString(text_style + "Twoja wartość: " + score_style + playerScore));
-        finalLore.add(StringFormatter.formatString(text_style + "Twoja pozycja: " + score_style + this.leaderboard.getPlayerPosition(player.getName(), category)));
+        //finalLore.add(StringFormatter.formatString(text_style + "Twoja pozycja: " + score_style + this.leaderboard.getPlayerPosition(player.getName(), category)));
         finalLore.add(" ");
 
         for (int i = 0; i < leaderboard.size(); i++) {

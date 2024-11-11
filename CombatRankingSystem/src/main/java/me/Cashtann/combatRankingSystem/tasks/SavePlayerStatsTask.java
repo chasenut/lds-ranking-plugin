@@ -22,7 +22,7 @@ public class SavePlayerStatsTask extends BukkitRunnable {
     @Override
     public void run() {
         PlayersStatsContainer.saveConfig();
-        Bukkit.getServer().getLogger().info("Saved players stats");
+        //Bukkit.getServer().getLogger().info("Saved players stats");
         saveCacheToConfig();
         plugin.getLeaderboardManager().updateLeaderboards();
     }

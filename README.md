@@ -6,6 +6,16 @@ Leaderboards also show people who are offline.
 
 Plugin has been successfully deployed and tested on commercial multiplayer server.
 
+Features:
+ - advanced player combat system with scores updated on every kill and death
+ - kills
+ - deaths
+ - mined stone
+ - travel distance by foot
+ - time played
+ - Vault Economy
+ - and many more under the hood
+
 ## Balance leaderboard preview: 
 
 ![preview1](./preview1.png)

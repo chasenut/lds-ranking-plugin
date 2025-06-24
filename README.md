@@ -19,3 +19,7 @@ Features:
 ## Balance leaderboard preview: 
 
 ![preview1](./preview1.png)
+
+# Stack
+JDK 17
+

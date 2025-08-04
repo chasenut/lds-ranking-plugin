@@ -1,4 +1,4 @@
-# Universal Ranking System
+# Leaderboards Ranking System
 
 Minecraft plugin for multiplayer servers used for leaderboards of various kinds.
 Plugin stores data about each player and updates it whenever it needs to.
